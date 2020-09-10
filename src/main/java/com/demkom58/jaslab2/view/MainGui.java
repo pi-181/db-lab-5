@@ -1,12 +1,14 @@
 package com.demkom58.jaslab2.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import java.awt.Dimension;
 
 public class MainGui extends JFrame {
     private JPanel rootPanel;
+    private JTextField sqlField;
+    private JButton goButton;
+    private JTable resultTable;
+    private JLabel statusBar;
 
     public MainGui() {
         setContentPane(rootPanel);
