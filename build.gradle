@@ -14,6 +14,9 @@ repositories {
 
 configurations { antTask }
 dependencies {
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.16'
+    compile group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
+
     compile name: 'forms_rt', version: '12.1.0'
 
     antTask name: 'javac2', version: '12.1.0'
