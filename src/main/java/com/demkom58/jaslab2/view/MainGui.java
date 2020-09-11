@@ -50,26 +50,33 @@ public class MainGui extends JFrame {
 
     private void handleGoButton(ActionEvent event) {
         resultTable.removeAll();
-        statusBar.setText("Idle...");
-
         final String text = sqlField.getText();
-
         goButton.setEnabled(false);
         statusBar.setText("Executing...");
         service.execute(() -> {
             try (Connection connection = databaseManager.getConnection();
                  Statement statement = connection.createStatement()) {
-                resultTable.setModel(buildTableModel(statement.executeQuery(text)));
+                final String lowerCase = text.toLowerCase();
+                if (lowerCase.startsWith("select")) {
+                    resultTable.setModel(buildTableModel(statement.executeQuery(text)));
+                } else if (lowerCase.startsWith("insert") || lowerCase.startsWith("update") || lowerCase.startsWith("delete")) {
+                    final int count = statement.executeUpdate(text);
+                    JOptionPane.showMessageDialog(this, "Update " + count + " items",
+                            "Info", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    statement.execute(text);
+                    JOptionPane.showMessageDialog(this, "SQL successfully executed!",
+                            "Info", JOptionPane.INFORMATION_MESSAGE);
+                }
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "SQL error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getLocalizedMessage(),
+                        "SQL error", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             } finally {
                 goButton.setEnabled(true);
                 statusBar.setText("Idling...");
             }
         });
-
-
     }
 
     public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
