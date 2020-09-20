@@ -44,7 +44,7 @@ public class MainGui extends JFrame {
             System.exit(0);
         }
 
-        Runtime.getRuntime().addShutdownHook(new Thread(databaseManager::shutwdown));
+        Runtime.getRuntime().addShutdownHook(new Thread(databaseManager::shutdown));
         goButton.addActionListener(this::handleGoButton);
     }
 

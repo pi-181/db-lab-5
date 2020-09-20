@@ -38,7 +38,7 @@ public class DatabaseManager {
         return connection;
     }
 
-    public void shutwdown() {
+    public void shutdown() {
         if (connection == null)
             return;
 
