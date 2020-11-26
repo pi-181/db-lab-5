@@ -1,6 +1,6 @@
-package com.demkom58.jaslab2.table;
+package com.demkom58.db_lab_4.table;
 
-import com.demkom58.jaslab2.DatabaseManager;
+import com.demkom58.db_lab_4.DatabaseManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

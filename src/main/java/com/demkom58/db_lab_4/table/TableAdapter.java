@@ -1,4 +1,4 @@
-package com.demkom58.jaslab2.table;
+package com.demkom58.db_lab_4.table;
 
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.NotNull;

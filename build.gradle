@@ -4,7 +4,7 @@ plugins {
     id 'idea'
 }
 
-application.mainClassName = 'com.demkom58.jaslab2.Main'
+application.mainClassName = 'com.demkom58.db_lab_4.Main'
 jar.enabled = true
 
 repositories {

@@ -1,8 +1,8 @@
-package com.demkom58.jaslab2.view;
+package com.demkom58.db_lab_4.view;
 
-import com.demkom58.jaslab2.DatabaseManager;
-import com.demkom58.jaslab2.table.RequestTableAdapter;
-import com.demkom58.jaslab2.table.TableAdapter;
+import com.demkom58.db_lab_4.DatabaseManager;
+import com.demkom58.db_lab_4.table.RequestTableAdapter;
+import com.demkom58.db_lab_4.table.TableAdapter;
 import org.intellij.lang.annotations.Language;
 
 import javax.swing.*;
@@ -38,7 +38,7 @@ public class MainGui extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        setTitle("Laboratory Work №2");
+        setTitle("Laboratory Work №4");
 
         try {
             databaseManager.setup();

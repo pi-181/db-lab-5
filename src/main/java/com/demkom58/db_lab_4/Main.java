@@ -1,6 +1,6 @@
-package com.demkom58.jaslab2;
+package com.demkom58.db_lab_4;
 
-import com.demkom58.jaslab2.view.MainGui;
+import com.demkom58.db_lab_4.view.MainGui;
 
 import javax.swing.*;
 import java.awt.*;

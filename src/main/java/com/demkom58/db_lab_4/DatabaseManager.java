@@ -1,4 +1,4 @@
-package com.demkom58.jaslab2;
+package com.demkom58.db_lab_4;
 
 import org.jetbrains.annotations.NotNull;
 
