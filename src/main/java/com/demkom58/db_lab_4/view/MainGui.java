@@ -21,7 +21,13 @@ public class MainGui extends JFrame {
     private JTextField paramlessSqlField;
     private JButton paramlessGoButton;
     private JTable paramlessResultTable;
-    private JLabel paramlessStatusBar;
+
+    private JTextField parametredFromField;
+    private JTextField parametredToField;
+    private JButton parametredGoButton;
+    private JTable parametredResultTable;
+
+    private JLabel statusBar;
 
     private final DatabaseManager databaseManager = new DatabaseManager();
     private final ExecutorService service = Executors.newFixedThreadPool(1, r -> {
@@ -37,7 +43,7 @@ public class MainGui extends JFrame {
     public MainGui() {
         setContentPane(rootPanel);
 
-        final Dimension minSize = new Dimension(450, 400);
+        final Dimension minSize = new Dimension(550, 400);
         setMaximumSize(minSize);
         setSize(minSize);
 
@@ -57,8 +63,9 @@ public class MainGui extends JFrame {
         Runtime.getRuntime().addShutdownHook(new Thread(databaseManager::shutdown));
 
         this.paramlessController = new ParamlessController(tabbedPane, paramlessJPanel, databaseManager, service,
-                paramlessSqlField, paramlessGoButton, paramlessResultTable, paramlessStatusBar);
-        this.parametredController = new ParametredController(tabbedPane, parametredJPanel, databaseManager, service);
+                paramlessSqlField, paramlessGoButton, paramlessResultTable, statusBar);
+        this.parametredController = new ParametredController(tabbedPane, parametredJPanel, databaseManager, service,
+                parametredFromField, parametredToField, parametredGoButton, parametredResultTable, statusBar);
         this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service);
     }
 
