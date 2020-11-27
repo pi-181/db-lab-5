@@ -1,6 +1,8 @@
 package com.demkom58.db_lab_4.view;
 
 import com.demkom58.db_lab_4.DatabaseManager;
+import com.demkom58.db_lab_4.request.master.MasterController;
+import com.demkom58.db_lab_4.request.parametred.ParametredController;
 import com.demkom58.db_lab_4.request.paramless.ParamlessController;
 
 import javax.swing.*;
@@ -29,6 +31,8 @@ public class MainGui extends JFrame {
     });
 
     private final ParamlessController paramlessController;
+    private final ParametredController parametredController;
+    private final MasterController masterController;
 
     public MainGui() {
         setContentPane(rootPanel);
@@ -52,8 +56,10 @@ public class MainGui extends JFrame {
 
         Runtime.getRuntime().addShutdownHook(new Thread(databaseManager::shutdown));
 
-        this.paramlessController = new ParamlessController(tabbedPane, paramlessJPanel, databaseManager,
-                service, paramlessSqlField, paramlessGoButton, paramlessResultTable, paramlessStatusBar);
+        this.paramlessController = new ParamlessController(tabbedPane, paramlessJPanel, databaseManager, service,
+                paramlessSqlField, paramlessGoButton, paramlessResultTable, paramlessStatusBar);
+        this.parametredController = new ParametredController(tabbedPane, parametredJPanel, databaseManager, service);
+        this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service);
     }
 
 }
