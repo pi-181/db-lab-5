@@ -1,23 +1,25 @@
 package com.demkom58.db_lab_4.view;
 
 import com.demkom58.db_lab_4.DatabaseManager;
-import com.demkom58.db_lab_4.table.RequestTableAdapter;
-import com.demkom58.db_lab_4.table.TableAdapter;
-import org.intellij.lang.annotations.Language;
+import com.demkom58.db_lab_4.request.paramless.ParamlessController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MainGui extends JFrame {
     private JPanel rootPanel;
-    private JTextField sqlField;
-    private JButton goButton;
-    private JTable resultTable;
-    private JLabel statusBar;
+
+    private JTabbedPane tabbedPane;
+    private JPanel paramlessJPanel;
+    private JPanel parametredJPanel;
+    private JPanel masterPanel;
+
+    private JTextField paramlessSqlField;
+    private JButton paramlessGoButton;
+    private JTable paramlessResultTable;
+    private JLabel paramlessStatusBar;
 
     private final DatabaseManager databaseManager = new DatabaseManager();
     private final ExecutorService service = Executors.newFixedThreadPool(1, r -> {
@@ -26,7 +28,7 @@ public class MainGui extends JFrame {
         return t;
     });
 
-    private final TableAdapter tableAdapter;
+    private final ParamlessController paramlessController;
 
     public MainGui() {
         setContentPane(rootPanel);
@@ -43,37 +45,15 @@ public class MainGui extends JFrame {
         try {
             databaseManager.setup();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getLocalizedMessage(), "Error occurred while setup", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getLocalizedMessage(),
+                    "Error occurred while setup", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
 
-        tableAdapter = new RequestTableAdapter(databaseManager, resultTable);
-
         Runtime.getRuntime().addShutdownHook(new Thread(databaseManager::shutdown));
-        goButton.addActionListener(this::handleGoButton);
-    }
 
-    private void handleGoButton(ActionEvent event) {
-        @Language("SQL")
-        final String text = sqlField.getText();
-
-        resultTable.removeAll();
-        goButton.setEnabled(false);
-        statusBar.setText("Executing...");
-        service.execute(() -> {
-            try {
-                tableAdapter.execute(text).ifPresent(message ->
-                        JOptionPane.showMessageDialog(this, message,
-                        "Info", JOptionPane.INFORMATION_MESSAGE));
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(this, e.getLocalizedMessage(),
-                        "SQL error", JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-            } finally {
-                goButton.setEnabled(true);
-                statusBar.setText("Idling...");
-            }
-        });
+        this.paramlessController = new ParamlessController(tabbedPane, paramlessJPanel, databaseManager,
+                service, paramlessSqlField, paramlessGoButton, paramlessResultTable, paramlessStatusBar);
     }
 
 }
