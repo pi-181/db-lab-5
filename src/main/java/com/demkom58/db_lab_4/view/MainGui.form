@@ -122,7 +122,7 @@
                   <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Відобразити грошові перекази від користувача X користувачеві Y (заповнити хоча б одне поле)"/>
+                  <text value="Відобразити грошові перекази від користувача X користувачеві Y"/>
                 </properties>
               </component>
               <component id="2ac25" class="javax.swing.JButton" binding="parametredGoButton" default-binding="true">
