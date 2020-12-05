@@ -4,6 +4,8 @@ import com.demkom58.db_lab_4.DatabaseManager;
 import com.demkom58.db_lab_4.request.master.MasterController;
 import com.demkom58.db_lab_4.request.parametred.ParametredController;
 import com.demkom58.db_lab_4.request.paramless.ParamlessController;
+import com.demkom58.db_lab_4.util.Column;
+import com.demkom58.db_lab_4.util.NamedObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,6 +34,7 @@ public class MainGui extends JFrame {
     private JTextField masterSchemaNameField;
     private JComboBox<String> masterVariantsBox;
     private JButton masterGoButton;
+    private JComboBox<NamedObject<Column>> masterSlavesVariantsBox;
 
     private JLabel statusBar;
 
@@ -72,8 +75,8 @@ public class MainGui extends JFrame {
                 paramlessSqlField, paramlessGoButton, paramlessResultTable, statusBar);
         this.parametredController = new ParametredController(tabbedPane, parametredJPanel, databaseManager, service,
                 parametredFromField, parametredToField, parametredGoButton, parametredResultTable, statusBar);
-        this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service,
-                masterMasterTable, masterSlaveTable, masterSchemaNameField, masterVariantsBox, masterGoButton, statusBar);
+        this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service, masterMasterTable,
+                masterSlaveTable, masterSchemaNameField, masterVariantsBox, masterGoButton, statusBar, masterSlavesVariantsBox);
     }
 
 }
