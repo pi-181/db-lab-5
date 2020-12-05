@@ -2,12 +2,12 @@ package com.demkom58.db_lab_4.request.paramless;
 
 import com.demkom58.db_lab_4.DatabaseManager;
 import com.demkom58.db_lab_4.util.SwingUtil;
-import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 
 public class RequestTableAdapter implements TableAdapter {

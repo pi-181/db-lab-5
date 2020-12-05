@@ -2,7 +2,8 @@ package com.demkom58.db_lab_4.request.master;
 
 import com.demkom58.db_lab_4.DatabaseManager;
 import com.demkom58.db_lab_4.util.*;
-import com.google.common.collect.*;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import org.intellij.lang.annotations.Language;
 
 import javax.swing.*;
@@ -10,8 +11,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 

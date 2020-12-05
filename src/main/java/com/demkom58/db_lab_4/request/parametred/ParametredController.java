@@ -4,7 +4,6 @@ import com.demkom58.db_lab_4.DatabaseManager;
 import com.demkom58.db_lab_4.request.paramless.RequestTableAdapter;
 import com.demkom58.db_lab_4.request.paramless.TableAdapter;
 import com.demkom58.db_lab_4.util.SwingUtil;
-import org.intellij.lang.annotations.Language;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
