@@ -27,6 +27,12 @@ public class MainGui extends JFrame {
     private JButton parametredGoButton;
     private JTable parametredResultTable;
 
+    private JTable masterMasterTable;
+    private JTable masterSlaveTable;
+    private JTextField masterSchemaNameField;
+    private JComboBox<String> masterVariantsBox;
+    private JButton masterGoButton;
+
     private JLabel statusBar;
 
     private final DatabaseManager databaseManager = new DatabaseManager();
@@ -66,7 +72,8 @@ public class MainGui extends JFrame {
                 paramlessSqlField, paramlessGoButton, paramlessResultTable, statusBar);
         this.parametredController = new ParametredController(tabbedPane, parametredJPanel, databaseManager, service,
                 parametredFromField, parametredToField, parametredGoButton, parametredResultTable, statusBar);
-        this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service);
+        this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service,
+                masterMasterTable, masterSlaveTable, masterSchemaNameField, masterVariantsBox, masterGoButton, statusBar);
     }
 
 }
