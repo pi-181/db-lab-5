@@ -1,11 +1,11 @@
-package com.demkom58.db_lab_4.view;
+package com.demkom58.db_lab_5.view;
 
-import com.demkom58.db_lab_4.DatabaseManager;
-import com.demkom58.db_lab_4.request.master.MasterController;
-import com.demkom58.db_lab_4.request.parametred.ParametredController;
-import com.demkom58.db_lab_4.request.paramless.ParamlessController;
-import com.demkom58.db_lab_4.util.Column;
-import com.demkom58.db_lab_4.util.NamedObject;
+import com.demkom58.db_lab_5.DatabaseManager;
+import com.demkom58.db_lab_5.request.master.MasterController;
+import com.demkom58.db_lab_5.request.parametred.ParametredController;
+import com.demkom58.db_lab_5.request.paramless.ParamlessController;
+import com.demkom58.db_lab_5.util.Column;
+import com.demkom58.db_lab_5.util.NamedObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,7 +59,7 @@ public class MainGui extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        setTitle("Laboratory Work №4");
+        setTitle("Laboratory Work №5");
 
         try {
             databaseManager.setup();

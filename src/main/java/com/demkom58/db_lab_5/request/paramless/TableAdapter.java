@@ -1,4 +1,4 @@
-package com.demkom58.db_lab_4.request.paramless;
+package com.demkom58.db_lab_5.request.paramless;
 
 import org.intellij.lang.annotations.Language;
 import org.jetbrains.annotations.NotNull;

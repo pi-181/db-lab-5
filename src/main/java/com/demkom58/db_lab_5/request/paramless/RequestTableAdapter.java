@@ -1,7 +1,7 @@
-package com.demkom58.db_lab_4.request.paramless;
+package com.demkom58.db_lab_5.request.paramless;
 
-import com.demkom58.db_lab_4.DatabaseManager;
-import com.demkom58.db_lab_4.util.SwingUtil;
+import com.demkom58.db_lab_5.DatabaseManager;
+import com.demkom58.db_lab_5.util.SwingUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

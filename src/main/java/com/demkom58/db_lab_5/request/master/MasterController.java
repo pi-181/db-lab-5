@@ -1,7 +1,7 @@
-package com.demkom58.db_lab_4.request.master;
+package com.demkom58.db_lab_5.request.master;
 
-import com.demkom58.db_lab_4.DatabaseManager;
-import com.demkom58.db_lab_4.util.*;
+import com.demkom58.db_lab_5.DatabaseManager;
+import com.demkom58.db_lab_5.util.*;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import org.intellij.lang.annotations.Language;

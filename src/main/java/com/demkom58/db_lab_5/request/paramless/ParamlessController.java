@@ -1,6 +1,6 @@
-package com.demkom58.db_lab_4.request.paramless;
+package com.demkom58.db_lab_5.request.paramless;
 
-import com.demkom58.db_lab_4.DatabaseManager;
+import com.demkom58.db_lab_5.DatabaseManager;
 import org.intellij.lang.annotations.Language;
 
 import javax.swing.*;

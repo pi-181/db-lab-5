@@ -1,4 +1,4 @@
-package com.demkom58.db_lab_4.util;
+package com.demkom58.db_lab_5.util;
 
 @FunctionalInterface
 public interface ThrowableRunnable {
