@@ -1,6 +1,7 @@
 package com.demkom58.db_lab_5.view;
 
 import com.demkom58.db_lab_5.DatabaseManager;
+import com.demkom58.db_lab_5.report.JasperReporter;
 import com.demkom58.db_lab_5.request.master.MasterController;
 import com.demkom58.db_lab_5.request.parametred.ParametredController;
 import com.demkom58.db_lab_5.request.paramless.ParamlessController;
@@ -14,6 +15,10 @@ import java.util.concurrent.Executors;
 
 public class MainGui extends JFrame {
     private JPanel rootPanel;
+
+    private JMenuItem simpleReportMenuItem;
+    private JMenuItem nestedReportMenuItem;
+    private JMenuItem statReportMenuItem;
 
     private JTabbedPane tabbedPane;
     private JPanel paramlessJPanel;
@@ -45,6 +50,7 @@ public class MainGui extends JFrame {
         return t;
     });
 
+    private final JasperReporter jasperReporter;
     private final ParamlessController paramlessController;
     private final ParametredController parametredController;
     private final MasterController masterController;
@@ -77,6 +83,11 @@ public class MainGui extends JFrame {
                 parametredFromField, parametredToField, parametredGoButton, parametredResultTable, statusBar);
         this.masterController = new MasterController(tabbedPane, masterPanel, databaseManager, service, masterMasterTable,
                 masterSlaveTable, masterSchemaNameField, masterVariantsBox, masterGoButton, statusBar, masterSlavesVariantsBox);
+
+        this.jasperReporter = new JasperReporter(databaseManager, service,
+                simpleReportMenuItem, nestedReportMenuItem, statReportMenuItem);
+
+        pack();
     }
 
 }
