@@ -55,7 +55,11 @@ public class JasperReporter {
     }
 
     protected void onStatReport(ActionEvent e) {
-        System.out.println("Generating statistical report!");
+        execute(() -> {
+            try (Connection c = databaseManager.getConnection()) {
+                showReport("Stats Report", "/jr/Stats.jrxml", new HashMap<>(), c);
+            }
+        });
     }
 
     private void showReport(String name, String template, Map<String, Object> parameters, Connection connection) throws IOException, JRException {

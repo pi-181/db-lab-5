@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Stats" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb6c8487-0419-4ab7-8f31-b0827307e65d">
+    <property name="com.jaspersoft.studio.data.sql.tables" value="c29jaWFsLnVzZXIgLDMwLDMwLDE4YzkwODkxLTUxYjAtNGJmMi05YTE1LWIzNzcyZDU0MjY5ODs="/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+    <subDataset name="BirthyearDataset" uuid="1ebde3c9-60b9-4fa2-a20e-90419156a1f5">
+        <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+        <queryString language="SQL">
+            <![CDATA[SELECT (DATE_PART('year', now()) - DATE_PART('year', u.birthday_date)) AS birthyear, COUNT(*) AS count
+    FROM social."user" u
+    GROUP BY birthyear;]]>
+        </queryString>
+        <field name="birthyear" class="java.lang.String">
+            <property name="com.jaspersoft.studio.field.name" value="birthyear"/>
+            <property name="com.jaspersoft.studio.field.label" value="birthyear"/>
+        </field>
+        <field name="count" class="java.lang.Long">
+            <property name="com.jaspersoft.studio.field.name" value="count"/>
+            <property name="com.jaspersoft.studio.field.label" value="count"/>
+        </field>
+        <group name="birthyear">
+            <groupExpression><![CDATA[$F{birthyear}]]></groupExpression>
+        </group>
+        <group name="count">
+            <groupExpression><![CDATA[$F{count}]]></groupExpression>
+        </group>
+    </subDataset>
+    <subDataset name="CreationYearDataset" uuid="a0af154e-d153-402f-a7c7-5ce3fc5e1f06">
+        <property name="com.jaspersoft.studio.data.sql.tables" value="c29jaWFsLnVzZXIgLDE1LDE1LDNhYzE1N2I3LTZjZTQtNDBkYy1hMWQyLWI5NmY5NjIyNDYwZDs="/>
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+        <queryString language="SQL">
+            <![CDATA[SELECT DATE_PART( 'year',u.creation_time) AS creation_year,
+	COUNT(*) AS count
+FROM social.user u
+GROUP BY creation_year
+ORDER BY creation_year]]>
+        </queryString>
+        <field name="creation_year" class="java.lang.String">
+            <property name="com.jaspersoft.studio.field.name" value="creation_year"/>
+            <property name="com.jaspersoft.studio.field.label" value="creation_year"/>
+        </field>
+        <field name="count" class="java.lang.Long">
+            <property name="com.jaspersoft.studio.field.name" value="count"/>
+            <property name="com.jaspersoft.studio.field.label" value="count"/>
+        </field>
+        <group name="creation_year">
+            <groupExpression><![CDATA[$F{creation_year}]]></groupExpression>
+        </group>
+        <group name="count">
+            <groupExpression><![CDATA[$F{count}]]></groupExpression>
+        </group>
+    </subDataset>
+    <queryString language="SQL">
+        <![CDATA[SELECT a.birthmonth,
+	COUNT(*)
+FROM (SELECT TO_CHAR( birthday_date,'Month') AS birthmonth FROM social.user) a
+GROUP BY a.birthmonth]]>
+    </queryString>
+    <field name="birthmonth" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="birthmonth"/>
+        <property name="com.jaspersoft.studio.field.label" value="birthmonth"/>
+    </field>
+    <field name="count" class="java.lang.Long">
+        <property name="com.jaspersoft.studio.field.name" value="count"/>
+        <property name="com.jaspersoft.studio.field.label" value="count"/>
+    </field>
+    <group name="birthmonth">
+        <groupExpression><![CDATA[$F{birthmonth}]]></groupExpression>
+    </group>
+    <group name="count">
+        <groupExpression><![CDATA[$F{count}]]></groupExpression>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="59" splitType="Stretch">
+            <staticText>
+                <reportElement x="72" y="0" width="410" height="50" uuid="43b773bb-d449-4081-993a-b3578e6eb78d"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="37"/>
+                </textElement>
+                <text><![CDATA[STATISTICAL REPORT]]></text>
+            </staticText>
+        </band>
+    </title>
+    <summary>
+        <band height="705" splitType="Stretch">
+            <pieChart>
+                <chart evaluationTime="Report">
+                    <reportElement x="0" y="90" width="283" height="255" uuid="6ffc007c-3366-4244-82be-886ed56b2089"/>
+                    <chartTitle/>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <pieDataset>
+                    <dataset resetType="Report"/>
+                    <keyExpression><![CDATA[$F{birthmonth}]]></keyExpression>
+                    <valueExpression><![CDATA[$F{count}]]></valueExpression>
+                    <labelExpression><![CDATA[$F{birthmonth}]]></labelExpression>
+                </pieDataset>
+                <piePlot>
+                    <plot/>
+                    <itemLabel/>
+                </piePlot>
+            </pieChart>
+            <staticText>
+                <reportElement x="0" y="30" width="290" height="60" uuid="4039a0ca-b154-464a-940a-366f39a3ebae"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="40"/>
+                </textElement>
+                <text><![CDATA[Birthdays Month]]></text>
+            </staticText>
+            <barChart>
+                <chart evaluationTime="Report">
+                    <reportElement x="300" y="100" width="255" height="240" uuid="ae44ce43-25ba-4061-9a63-47c4f899ac67"/>
+                    <chartTitle/>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <categoryDataset>
+                    <dataset resetType="Report">
+                        <datasetRun subDataset="BirthyearDataset" uuid="a059662f-eaa3-4ad0-9828-bb11770890a1">
+                            <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                        </datasetRun>
+                    </dataset>
+                    <categorySeries>
+                        <seriesExpression><![CDATA[$F{birthyear}]]></seriesExpression>
+                        <categoryExpression><![CDATA[$F{birthyear}]]></categoryExpression>
+                        <valueExpression><![CDATA[$F{count}]]></valueExpression>
+                        <labelExpression><![CDATA[$F{birthyear}]]></labelExpression>
+                    </categorySeries>
+                </categoryDataset>
+                <barPlot>
+                    <plot/>
+                    <itemLabel/>
+                    <categoryAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </categoryAxisFormat>
+                    <valueAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </valueAxisFormat>
+                </barPlot>
+            </barChart>
+            <staticText>
+                <reportElement x="281" y="340" width="272" height="60" uuid="a2535d6f-e9a8-4e21-8e41-943e56583f6f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="40"/>
+                </textElement>
+                <text><![CDATA[Years Old]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="430" width="555" height="60" uuid="1fa7400e-fcbd-4ab1-864b-7ff7d7b81403"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="45"/>
+                </textElement>
+                <text><![CDATA[Registrations By Year]]></text>
+            </staticText>
+            <stackedBar3DChart>
+                <chart evaluationTime="Report">
+                    <reportElement x="0" y="490" width="555" height="200" uuid="ee317801-9fb7-4368-810b-4dd1f902ed4e"/>
+                    <chartTitle/>
+                    <chartSubtitle/>
+                    <chartLegend/>
+                </chart>
+                <categoryDataset>
+                    <dataset resetType="Report">
+                        <datasetRun subDataset="CreationYearDataset" uuid="cefd7cce-9389-4aaa-80fb-fbcb5e6fa730"/>
+                    </dataset>
+                    <categorySeries>
+                        <seriesExpression><![CDATA[$F{creation_year}]]></seriesExpression>
+                        <categoryExpression><![CDATA[$F{creation_year}]]></categoryExpression>
+                        <valueExpression><![CDATA[$F{count}]]></valueExpression>
+                        <labelExpression><![CDATA[$F{creation_year}]]></labelExpression>
+                    </categorySeries>
+                </categoryDataset>
+                <bar3DPlot>
+                    <plot/>
+                    <itemLabel/>
+                    <categoryAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </categoryAxisFormat>
+                    <valueAxisFormat>
+                        <axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+                    </valueAxisFormat>
+                </bar3DPlot>
+            </stackedBar3DChart>
+        </band>
+    </summary>
+</jasperReport>
