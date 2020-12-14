@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NestedSub_Group" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c93e06f-67e7-4caf-b67b-cc213028505e">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[c29jaWFsLiJncm91cCIgLDE1LDE1LGI4NzM0YjczLWI5ZDQtNDkxNi04MWU1LTA1YTY0OTkzOTY0
+Yzs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<subDataset name="GroupDataset" uuid="576a7747-c97d-4727-b83f-56e3f4f97512">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+		<parameter name="us_id" class="java.lang.Integer"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT count(*) AS group_total FROM social."group" g WHERE g.owner_id = $P!{us_id}]]>
+		</queryString>
+		<field name="group_total" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="group_total"/>
+			<property name="com.jaspersoft.studio.field.label" value="group_total"/>
+		</field>
+		<group name="group_total">
+			<groupExpression><![CDATA[$F{group_total}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="own_id" class="java.lang.Integer"/>
+	<parameter name="subscribers_subreport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT group_id, owner_id, group_name, description FROM social."group" g WHERE owner_id = $P!{own_id} ORDER BY group_id DESC]]>
+	</queryString>
+	<field name="group_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="group_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="group_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="group"/>
+	</field>
+	<field name="owner_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="owner_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="owner_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="group"/>
+	</field>
+	<field name="group_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="group_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="group_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="group"/>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="group"/>
+	</field>
+	<group name="group_id">
+		<groupExpression><![CDATA[$F{group_id}]]></groupExpression>
+	</group>
+	<group name="DetailGroup">
+		<groupHeader>
+			<band height="50">
+				<textField textAdjust="StretchHeight">
+					<reportElement x="61" y="5" width="86" height="40" uuid="fd6d4e22-dc8c-4b14-9f6b-c2caf94e3a0d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34fb04b3-e072-4516-be46-cd2f70b05702"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{group_name}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="147" y="5" width="89" height="40" uuid="d99c8d0e-b392-47c2-a50c-e7e9ae0fffb5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34fb04b3-e072-4516-be46-cd2f70b05702"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="0" y="5" width="61" height="40" uuid="1eeee520-bf25-48bb-968c-6a9c8f9306e1">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34fb04b3-e072-4516-be46-cd2f70b05702"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{group_id}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="236" y="5" width="79" height="40" uuid="9ab6bc1b-1581-4765-b0cc-b6586eca27a5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34fb04b3-e072-4516-be46-cd2f70b05702"/>
+					</reportElement>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{owner_id}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="315" height="1" uuid="7905a8f2-11e7-4f46-abe1-af17b36711b8">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="SubscribersGroup">
+		<groupHeader>
+			<band height="5">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<subreport>
+					<reportElement mode="Opaque" x="61" y="0" width="508" height="4" backcolor="#D9D9D9" uuid="f5a96d85-2a08-4bf9-9fc8-2ac7387727c0"/>
+					<subreportParameter name="grp_id">
+						<subreportParameterExpression><![CDATA[$F{group_id}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{subscribers_subreport}]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="61" height="40" forecolor="#006699" backcolor="#E6E6E6" uuid="7d8b89b3-d989-491f-a1f3-cb848a9bf249">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e6c7c648-72d1-4f5c-8756-ba5f7daa1f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[group_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="236" y="0" width="79" height="40" forecolor="#006699" backcolor="#E6E6E6" uuid="3d33fdf4-307b-4d61-a758-a18adc839afc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e6c7c648-72d1-4f5c-8756-ba5f7daa1f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[owner_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="61" y="0" width="86" height="40" forecolor="#006699" backcolor="#E6E6E6" uuid="0642a049-2870-4da5-aaf2-45178e994721">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e6c7c648-72d1-4f5c-8756-ba5f7daa1f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[group_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="147" y="0" width="89" height="40" forecolor="#006699" backcolor="#E6E6E6" uuid="05b19363-0a35-4e48-ab91-21757a69109f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e6c7c648-72d1-4f5c-8756-ba5f7daa1f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[description]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="50">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="61" height="40" forecolor="#006699" backcolor="#E6E6E6" uuid="7f42fddc-2096-44be-99e9-448d63c85178">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e6c7c648-72d1-4f5c-8756-ba5f7daa1f44"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Всього:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="63" y="0" width="119" height="40" uuid="df050db9-479f-4067-afc6-577eb61a368e"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="GroupDataset" uuid="476cffd8-361f-42ba-9eaa-0d3613e7c891">
+						<datasetParameter name="us_id">
+							<datasetParameterExpression><![CDATA[$P{own_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="40" width="119">
+						<textField>
+							<reportElement x="0" y="0" width="119" height="40" uuid="9f76948a-678f-454e-930b-b27748ded115"/>
+							<textElement verticalAlignment="Middle">
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{group_total}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>
